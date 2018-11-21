@@ -7,10 +7,10 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
-		classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}")
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+		classpath "org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}"
+		classpath "org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}"
 	}
 }
 
@@ -43,13 +43,18 @@ repositories {
 
 
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+	// Spring
+	implementation "org.springframework.boot:spring-boot-starter-web"
+
+	// Kotin
+	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 
-
-	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion" 
-	implementation "org.springframework.boot:spring-boot-starter-web"
+	// Database
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	runtimeOnly('com.h2database:h2')
+
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
