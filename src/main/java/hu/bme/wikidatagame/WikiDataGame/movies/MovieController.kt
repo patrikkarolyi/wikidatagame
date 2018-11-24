@@ -24,8 +24,9 @@ class MovieController {
 
     @GetMapping("/index")
     fun greeting(model : Model) : String {
-        model.addAttribute("movietitle","Benjamin Button különös élete")
+        val movie = movieRepository.findById(1).get()
+        model.addAttribute("movie",movie)
         return "index"
     }
-
+//Movies(1,"a","v","d",false))
 }
