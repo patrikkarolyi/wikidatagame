@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>WikiData game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+<body>
+<!-- Title section -->
+<div class="jumbotron">
+    <div class="container">
+        <h3>What genre movie is: </h3>
+        <h1 id="movietitle" class="display-3" th:text="${movietitle}">
+            Name goes here
+        </h1>
+    </div>
+</div>
+
+<!-- Buttons section -->
+<div class="text-center">
+    <a id="btn1" onclick="postData(1)" class="btn btn-lg btn-primary btn-lg">A</a>
+    <a id="btn2" onclick="postData(2)" class="btn btn-lg btn-danger">B</a>
+    <a id="btn3" onclick="postData(3)" class="btn btn-lg btn-warning">C</a>
+    <a id="btn4" onclick="postData(4)" class="btn btn-lg btn-success">D</a>
+
+    <a id="btn5" href="/movies/index" class="btn btn-lg btn-secondary">skip</a>
+</div>
+
+<script>
+
+    function postData(btnid){
+        if(btnid==1){
+            document.getElementById('movietitle').innerHTML = "Marika néni és az elvetemült befőttek";
+        }
+        if(btnid==2){
+            document.getElementById('movietitle').innerHTML = "Szabók és Kovácsok";
+        }
+        if(btnid==3){
+            document.getElementById('movietitle').innerHTML = "Furmányos favágók";
+        }
+        if(btnid==4){
+            document.getElementById('movietitle').innerHTML = "Furmányos favágók 2";
+        }
+    }
+</script>
+
+</body>
+</html>
