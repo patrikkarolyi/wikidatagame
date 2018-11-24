@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -17,20 +14,19 @@
 <div class="jumbotron">
     <div class="container">
         <h3>What genre movie is: </h3>
-        <h1 id="movietitle" class="display-3" th:text="${movie.title}">
+        <h1 id="movietitle" class="text-primary display-3" th:text="${movie.title}">
             Name goes here
         </h1>
     </div>
 </div>
 
 <!-- Buttons section -->
-<div class="text-center">
-    <a id="btn1" onclick="postData(1)" class="btn btn-lg btn-primary btn-lg">A</a>
-    <a id="btn2" onclick="postData(2)" class="btn btn-lg btn-danger">B</a>
-    <a id="btn3" onclick="postData(3)" class="btn btn-lg btn-warning">C</a>
-    <a id="btn4" onclick="postData(4)" class="btn btn-lg btn-success">D</a>
+<div class="container">
+    <p>
+    <button class="btn-lg btn-success" th:each="genre :  ${genres}" th:text="${genre.name}">Btn</button>
 
     <a id="btn5" href="/movies/index" class="btn btn-lg btn-secondary">skip</a>
+    </p>
 </div>
 
 <script>
