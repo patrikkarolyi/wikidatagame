@@ -5,7 +5,10 @@ import hu.bme.wikidatagame.WikiDataGame.movies.MovieRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestParam
 import java.util.concurrent.atomic.AtomicLong
 
 
@@ -33,17 +36,23 @@ class GreetingController {
 
 
     @GetMapping("/index")
-    fun getMovie(model : Model) : String {
-        val movie = movieRepository.findById(1).get()
-        val genres = genreRepository.findAll()
-        model.addAttribute("movie",movie)
-        model.addAttribute("genres",genres)
+    fun getMovie(model: Model): String {
+        setModelValues(model)
         return "index"
     }
 
-    @PostMapping("/index")
-    fun submitMovie(@ModelAttribute greeting: Greeting): String {
+    @PostMapping(value = ["/index"])
+    fun submitMovie(genrevalue: String, movieid: String, model: Model): String {
+        setModelValues(model)
         return "index"
+    }
+
+
+    fun setModelValues(model: Model) {
+        val movie = movieRepository.findById(1).get()
+        val genres = genreRepository.findAll()
+        model.addAttribute("movie", movie)
+        model.addAttribute("genres", genres)
     }
 
 }

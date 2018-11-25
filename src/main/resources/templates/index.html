@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>WikiData game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,29 +23,14 @@
 <!-- Buttons section -->
 <div class="container">
     <p>
-    <button class="btn-lg btn-success" th:each="genre :  ${genres}" th:text="${genre.name}">Btn</button>
-
-    <a id="btn5" href="/movies/index" class="btn btn-lg btn-secondary">skip</a>
+    <form action="/index" method="post">
+        <input name="movieid" type="hidden" th:value="${movie.id}">
+        <button th:each="genre : ${genres}" name="genrevalue" class="btn btn-lg btn-success" type="submit"
+                th:value="${genre.idgenre}"
+                th:text="${genre.name}"></button>
+        <button name="genrevalue" class="btn btn-lg btn-warning" type="submit" value="#">Skip</button>
+    </form>
     </p>
 </div>
-
-<script>
-
-    function postData(btnid){
-        if(btnid==1){
-            document.getElementById('movietitle').innerHTML = "Marika néni és az elvetemült befőttek";
-        }
-        if(btnid==2){
-            document.getElementById('movietitle').innerHTML = "Szabók és Kovácsok";
-        }
-        if(btnid==3){
-            document.getElementById('movietitle').innerHTML = "Furmányos favágók";
-        }
-        if(btnid==4){
-            document.getElementById('movietitle').innerHTML = "Furmányos favágók 2";
-        }
-    }
-</script>
-
 </body>
 </html>
