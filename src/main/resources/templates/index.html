@@ -28,7 +28,7 @@
         <button th:each="genre : ${genres}" name="genrevalue" class="btn btn-lg btn-success" type="submit"
                 th:value="${genre.idgenre}"
                 th:text="${genre.name}"></button>
-        <button name="genrevalue" class="btn btn-lg btn-warning" type="submit" value="#">Skip</button>
+        <button name="genrevalue" class="btn btn-lg btn-warning" type="submit" value="0">Skip</button>
     </form>
     </p>
 </div>

@@ -1,30 +1,20 @@
-package hu.bme.wikidatagame.WikiDataGame.greeting
+package hu.bme.wikidatagame.WikiDataGame.main
 
 import hu.bme.wikidatagame.WikiDataGame.genre.GenreRepository
 import hu.bme.wikidatagame.WikiDataGame.movies.MovieRepository
+import hu.bme.wikidatagame.WikiDataGame.movies.Movies
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestParam
 import java.util.concurrent.atomic.AtomicLong
 
 
 @Controller
-class GreetingController {
+class MainController {
 
     val counter = AtomicLong()
-
-    @GetMapping("/")
-    fun greeting(@RequestParam(value = "name", defaultValue = "World") name: String) = "index"
-    // Greeting(counter.incrementAndGet(), "Hello, $name")
-
-    @PostMapping("/")
-    fun greetingSubmit(@ModelAttribute greeting: Greeting): String {
-        return "index"
-    }
 
     @Autowired
     private
@@ -43,13 +33,23 @@ class GreetingController {
 
     @PostMapping(value = ["/index"])
     fun submitMovie(genrevalue: String, movieid: String, model: Model): String {
+        updateMovie(movieid,genrevalue)
         setModelValues(model)
         return "index"
     }
 
+    private fun updateMovie(movieid: String, genrevalue: String) {
+        if(movieid!="0")
+            println("MOVIE UPDATED!")
+
+    }
+
 
     fun setModelValues(model: Model) {
-        val movie = movieRepository.findById(1).get()
+        var movie = Movies(0,"We are out of the movies","a","a",false)
+        val data = movieRepository.findById(counter.incrementAndGet().toInt())
+                if(data.isPresent)
+                   movie=data.get()
         val genres = genreRepository.findAll()
         model.addAttribute("movie", movie)
         model.addAttribute("genres", genres)

@@ -1,14 +1,13 @@
 package hu.bme.wikidatagame.WikiDataGame.movies
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Controller
-import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.RestController
 
 
-@Controller
+@RestController
 @RequestMapping(path = arrayOf("/movies"))
 class MovieController {
 
@@ -22,11 +21,4 @@ class MovieController {
         return movieRepository.findAll()
     }
 
-    @GetMapping("/index")
-    fun greeting(model : Model) : String {
-        val movie = movieRepository.findById(1).get()
-        model.addAttribute("movie",movie)
-        return "index"
-    }
-//Movies(1,"a","v","d",false))
 }
