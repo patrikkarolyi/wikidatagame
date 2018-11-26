@@ -27,6 +27,7 @@ class MainController {
 
     @GetMapping("/index")
     fun getMovie(model: Model): String {
+        counter.set(9000L)
         setModelValues(model)
         return "index"
     }
@@ -39,8 +40,12 @@ class MainController {
     }
 
     private fun updateMovie(movieid: String, genrevalue: String) {
-        if(movieid!="0")
-            println("MOVIE UPDATED!")
+        val movieOptional = movieRepository.findById(movieid.toInt())
+
+        if(movieOptional.isPresent){
+            val movie = movieOptional.get()
+            movieRepository.save(Movies(movie.id,movie.title,movie.wdmovieid,genrevalue,true))
+        }
 
     }
 
