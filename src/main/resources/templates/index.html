@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>WikiData game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+<!-- Title section -->
+<div class="jumbotron">
+    <div class="container">
+        <h3>What is the genre of?</h3>
+        <h1 id="movietitle" class="text-primary display-3" th:text="${movie.title}">
+            Name goes here
+        </h1>
+    </div>
+</div>
+
+<!-- Buttons section -->
+<div class="container">
+    <p>
+    <form action="/index" method="post">
+        <input name="movieid" type="hidden" th:value="${movie.id}">
+        <button th:each="genre : ${genres}" name="genrevalue" class="btn btn-lg btn-success" type="submit"
+                th:value="${genre.idgenre}"
+                th:text="${genre.name}"></button>
+        <button name="genrevalue" class="btn btn-lg btn-warning" type="submit" value="0">Skip</button>
+    </form>
+    </p>
+</div>
+</body>
+</html>
