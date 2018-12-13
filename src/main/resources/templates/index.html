@@ -14,8 +14,8 @@
 <div class="jumbotron">
     <div class="container">
         <h3>What is the genre of?</h3>
-        <h1 id="movietitle" class="text-primary display-3" th:text="${movie.title}">
-            Name goes here
+        <h1 id="movietitle" class="text-primary display-3">
+            <a th:href="${movie.wdmovieid}" th:text="${movie.title}">Name goes here</a>
         </h1>
     </div>
 </div>
